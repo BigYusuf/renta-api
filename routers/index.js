@@ -1,0 +1,4 @@
+
+exports.locationRouter = require('./locationRouter');
+
+
