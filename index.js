@@ -1,5 +1,4 @@
 const express = require('express');
-const connectDatabase = require('./config/database')
 const dotenv = require('dotenv');
 
 const bodyParser = require('body-parser');
@@ -9,6 +8,7 @@ const helmet = require('helmet');
 const cors = require('cors');
 const xss = require('xss-clean');
 const locationRouter = require('./routers/locationRouter');
+const userRouter = require('./routers/userRouter');
 
 const app = express()
 
@@ -31,6 +31,7 @@ dotenv.config();
 
 // admin users
 app.use('/api/location', locationRouter);
+app.use('/api/users', userRouter);
 
  app.get('/', (req, res) => {
    res.send('Renta API');

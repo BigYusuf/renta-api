@@ -13,7 +13,7 @@ exports.getAutoComplete = expressAsyncHandler(async (req, res) => {
       method: 'get',
       url: url
     }).then(function (result) {
-     res.status(200).json({message: "sucessfull", data: result.data}); 
+     res.status(200).json( result.data); 
     //  return res.data
     }).catch(err => console.log(err));
 })
@@ -30,7 +30,7 @@ exports.getSearch = expressAsyncHandler(async (req, res) => {
       method: 'get',
       url: url
     }).then(function (result) {
-     res.status(200).json({message: "sucessfull", data: result.data}); 
+     res.status(200).json( result.data ); 
      //  return res.data
     }).catch(err => 
         res.status(400).json({message: err.message, data: err})

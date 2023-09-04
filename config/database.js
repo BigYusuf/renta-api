@@ -1,20 +1,17 @@
 
-const mongoose = require("mongoose")// connecting to my mongo server
+// connecting to posgres server
+const {Pool} = require('pg')
 const dotenv = require('dotenv');
-
 //setting up config file
-dotenv.config();
 
-const connectionString= process.env.MONGO_URL
-const connectDatabase = () => {
-    
-    mongoose.connect(connectionString, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-    }).then((con)=> {
-      //  console.log(`DB Connection Successful to HOST: ${con.connection.host}`)
-        console.log(`Database Connected`)
-    })
-    .catch((err)=>console.log(err))
-}
-module.exports = connectDatabase;
+dotenv.config();
+const pool = new Pool({
+    user: process.env.DB_USER,
+    host: process.env.DB_HOST,
+    database: process.env.DB_NAME,
+    password: process.env.DB_PASSWORD,
+    port: process.env.DB_PORT,
+})
+pool.connect();
+
+module.exports = pool;
